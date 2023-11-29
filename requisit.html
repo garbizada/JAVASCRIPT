@@ -28,10 +28,15 @@
                 ajax.open('GET', url);
 
                 ajax.onreadystatechange = function() {
-                    if(ajax.readyState == 4) {
-                        console.log('Requisição finalizada com sucesso')
+                    if(ajax.readyState == 4 && ajax.status == 200) {
+
+						document.getElementById('conteudo').innerHTML = ajax.responseText;
+                        
                         document.getElementById('loading').remove()
                     }
+					else {
+						document.getElementById('conteudo').innerHTML = 'Não foi possivel concluir essa ação tente novamente mais tarde'
+					}
                 }
 
 
@@ -73,7 +78,7 @@
 		    	<div class="col-md-1"></div>
 
 		    	<div class="col-md-10" id="conteudo">
-		    		
+					
 		    	</div>
 		    		
 				<div class="col-md-1"></div>
